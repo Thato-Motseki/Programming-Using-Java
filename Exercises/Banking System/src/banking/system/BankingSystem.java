@@ -16,23 +16,35 @@ public class BankingSystem {
         // TODO code application logic here
         Scanner input = new Scanner (System.in);
         
+        //variable declarations:
         final String Stored_Username = "Admin_User";
         final String Stored_Password = "Pass@123";
+        int attempts = 0;
+        int maxAttempts = 3;
+        boolean lockedOut = false;
         
+        while (attempts < maxAttempts){
+            System.out.print("Enter your Username: ");
+            String username = input.next();
         
-        System.out.print("Enter your Username: ");
-        String username = input.next();
-        
-        System.out.print("Enter your password: ");
-        String password = input.next();
-        
-        boolean isAuthenticated = username.equals(Stored_Username) && password.equals(Stored_Password);
-        
-        if (isAuthenticated){
-            System.out.println("Access granted!");
+            System.out.print("Enter your password: ");
+            String password = input.next();
+            
+            boolean isAuthenticated = username.equals(Stored_Username) && password.equals(Stored_Password);
+            
+            if (!isAuthenticated){
+                attempts++;
+                System.out.println("Attemts Remaining: " + (maxAttempts-attempts));
+            }
+            else {
+                System.out.println("Access granted!");
+                break;
+            }
+            
+        if (attempts == maxAttempts){
+            System.out.println("Account locked, max attempts reached.");
         }
-        else {
-            System.out.println("Access denied!");
+            
         }
         
     }    
