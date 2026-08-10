@@ -31,20 +31,39 @@ public class ArrayTraversal {
         String [] Veggies;
         int size;
         
-        System.out.println("What # of veggies do you want to add? ");
+        System.out.print("What # of veggies do you want to add? ");
         size = scanner.nextInt();
         scanner.nextLine();
         
         Veggies = new String [size];
         
+        
         for (int i = 1; i <= Veggies.length; i++){
-            System.out.print("Enter veggie " + i + ": " + "\n");
+            System.out.print("Enter veggie " + i + ": " );
             Veggies[i] = scanner.nextLine();
+            
         }
         
         for (String veggie : Veggies){
             System.out.print("Array of veggies: " + veggie + " ");
             
+        }
+        
+        //Telephone Array
+        System.out.print("\n\n" + "*" .repeat(5) + "TELEPHONE" + "*" .repeat(5)+ "\n");
+        char [][] telephone = {
+                               {'1', '2', '3'},
+                               {'4', '5', '6'}, 
+                               {'7', '8', '9'}, 
+                               {'*', '0', '#'}
+        };
+        
+        for (char [] row : telephone){
+            for (char number : row){
+                System.out.print(number + " ");
+            }
+            System.out.println();
+                   
         }
         
     }
