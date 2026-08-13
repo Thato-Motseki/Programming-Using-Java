@@ -35,6 +35,7 @@ public class SupermarketBillingSystem {
         
         System.out.print("How many items do you want to buy? ");
         int item_number = scanner.nextInt();
+        String[][] purchases = new String[item_number][3];
         int i = 0;
         
         if (item_number == 0){
@@ -66,22 +67,40 @@ public class SupermarketBillingSystem {
                             subtotal = price * quantity;
                             total += subtotal;
                             
-                            if (total > 300){
-                                discount = total * 0.10;
-                                total_price = total - discount;
-                            }
-                            
-                            if (total < 20){
-                                total_price = 20.00;
-                            }
+                            //Storing the user items in a second, empty array
+                            purchases[i][0] = products[k][1]; //product name
+                            purchases[i][1] = String.valueOf(quantity);//quantity converted to string
+                            purchases[i][2] = String.valueOf(subtotal); //subtotal converted to string
+
+                            i++;
                         } 
                     }
                 }
             }
+            //if order number < 1 or > 5
             else{
                 System.out.print("Invalid item number!");
             }  
-            i++;
+            
+        }
+        //calculating discount and total price
+        if (total > 300){
+            discount = total * 0.10;
+            total_price = total - discount;
+        }
+        else if (total >= 20 && total <= 300){
+            total_price = total;
+        }
+        else{
+            total_price = 20.00;
+        }
+
+        //Order summary
+        System.out.print("\n" + "=" . repeat(5) + "ORDER SUMMARY" + "=" . repeat(5));
+        for (String[] purchase : purchases) {
+            System.out.println("\nProduct: " + purchase[0]
+                    + "  Quantity: " + purchase[1]
+                    + "  Subtotal: M" + purchase[2]);
         }
         System.out.println("Total: M" + total_price);
         
