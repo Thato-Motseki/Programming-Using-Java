@@ -1,0 +1,612 @@
+<html style="margin:0;padding:0;">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<script>
+(function(){
+  var s=document.createElement('style');
+  s.textContent=':root{--bg:#f8fafb;--card:#ffffff;--text:#0f172a;--muted:#64748b;--accent:#2d7eb5;--accent-soft:rgba(45,126,181,.14);--accent2:#c85a3a;--accent2-soft:rgba(200,90,58,.14);--border:rgba(15,23,42,.08)}';
+  document.head.appendChild(s);
+  
+  var s2=document.createElement('style');
+  s2.textContent=`
+    *{font-family:'IBM Plex Sans',system-ui,sans-serif}
+    body{background:var(--bg);color:var(--text);line-height:1.7}
+    .card-hover{transition:transform .25s,border-color .25s,box-shadow .25s}
+    .card-hover:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(45,126,181,.12)}
+    .stat-num{font-variant-numeric:tabular-nums;font-weight:700}
+    .section-num{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+    .pill{padding:3px 10px;border-radius:20px;background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);font-size:12px;font-weight:500}
+    .pill2{background:var(--accent2-soft);border-color:var(--accent2)}
+    .gradient-text{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tech-tag{display:inline-block;padding:2px 8px;border-radius:6px;background:rgba(15,23,42,.05);color:var(--muted);font-size:11px;font-weight:500;margin:2px}
+    .reveal{opacity:0;transform:translateY(12px);animation:reveal .5s ease forwards}
+    @keyframes reveal{to{opacity:1;transform:translateY(0)}}
+    .reveal:nth-child(1){animation-delay:.05s}
+    .reveal:nth-child(2){animation-delay:.1s}
+    .reveal:nth-child(3){animation-delay:.15s}
+    .reveal:nth-child(4){animation-delay:.2s}
+    .reveal:nth-child(5){animation-delay:.25s}
+    .reveal:nth-child(6){animation-delay:.3s}
+    .divider{height:1px;background:var(--border)}
+    .impact-bar{height:8px;border-radius:4px;background:rgba(15,23,42,.06);overflow:hidden}
+    .impact-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  `;
+  document.head.appendChild(s2);
+})();
+</script>
+<div style="background:var(--bg);min-height:100%;box-sizing:border-box;">
+<div style="max-width:1200px;margin:0 auto;padding:48px 24px;">
+
+  <!-- HERO -->
+  <div class="reveal" style="text-align:center;margin-bottom:56px;">
+    <div style="font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Deep Learning IndabaX Lesotho 2026 — Presenter Proposal</div>
+    <h1 style="font-size:clamp(28px,4vw,44px);font-weight:700;line-height:1.15;margin:0 0 20px;">
+      AI Solutions for <span class="gradient-text">Lesotho's Real-World Challenges</span>
+    </h1>
+    <p style="color:var(--muted);font-size:17px;max-width:720px;margin:0 auto;line-height:1.7;">
+      Five evidence-based artificial intelligence proposals addressing agriculture, healthcare, water, education, and infrastructure — grounded in Lesotho's development priorities and aligned with national digital transformation goals.
+    </p>
+  </div>
+
+  <!-- KEY STATISTICS -->
+  <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:56px;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;">
+      <div class="stat-num" style="font-size:32px;color:var(--accent);">45%</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px;">Population below $3.00/day poverty line</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">World Bank, 2025</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;">
+      <div class="stat-num" style="font-size:32px;color:var(--accent);">18.5%</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px;">Adult HIV prevalence (15–49 yrs)</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">CDC / Borgen Project, 2023</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;">
+      <div class="stat-num" style="font-size:32px;color:var(--accent2);">548</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px;">TB incidence per 100,000 people</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">WHO Lesotho, 2024</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;">
+      <div class="stat-num" style="font-size:32px;color:var(--accent);">87%</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px;">School dropout rate in rural areas</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">NSDP II / Lesotho News Agency</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center;">
+      <div class="stat-num" style="font-size:32px;color:var(--accent2);">72%</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:4px;">Population living in rural areas</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px;">PMC / WHO data</div>
+    </div>
+  </div>
+
+  <!-- SOLUTION 1: AGRICULTURE -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;overflow:hidden;position:relative;">
+    <div style="background:radial-gradient(600px 200px at 0% 0%,var(--accent-soft),transparent 70%);position:absolute;top:0;left:0;right:0;height:200px;pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="section-num">Solution 01</div>
+          <h2 style="font-size:24px;font-weight:700;margin:4px 0 8px;">AI-Powered Agricultural Extension & Climate Resilience System</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill">Agriculture</span>
+            <span class="pill pill2">Food Security</span>
+            <span class="pill" style="background:rgba(15,23,42,.05);border-color:var(--border);color:var(--muted);">Climate Adaptation</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-width:0;" class="grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">The Problem</h3>
+          <p style="color:var(--text);margin:0 0 14px;font-size:14px;">
+            <strong>29% of Lesotho's workforce</strong> depends on agriculture, yet maize and sorghum yields consistently fall below 5-year averages due to unpredictable rainfall, droughts, and limited extension services. Overstretched extension workers cannot reach all rural communities effectively, leaving farmers without timely advice on pest control, seed selection, and climate adaptation.
+          </p>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">The AI Solution</h3>
+          <ul style="margin:0;padding:0;list-style:none;font-size:14px;">
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">01</span>
+              <span><strong>Sesotho Chatbot:</strong> Mobile-first (WhatsApp/USSD) AI chatbot delivering localized farming advice in Sesotho. Already identified as a priority by IEEE Humanitarian Technologies for Lesotho.</span>
+            </li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">02</span>
+              <span><strong>Crop Disease Detection:</strong> CNN-based image recognition for maize/sorghum diseases via smartphone photos, achieving 88–94% field accuracy as demonstrated in African contexts.</span>
+            </li>
+            <li style="padding:8px 0;display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">03</span>
+              <span><strong>Drought Forecasting:</strong> ANN models combining satellite data, weather patterns, and indigenous knowledge for short-term drought predictions with up to 98% accuracy.</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top:16px;">
+            <span class="tech-tag">CNN</span>
+            <span class="tech-tag">Transformer Chatbot</span>
+            <span class="tech-tag">LSTM Forecasting</span>
+            <span class="tech-tag">Satellite Remote Sensing</span>
+            <span class="tech-tag">Sesotho NLP</span>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">Expected Impact</h3>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Crop yield improvement potential</span>
+              <span style="font-weight:700;color:var(--accent);">+30–40%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:75%;"></div></div>
+          </div>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Extension worker reach multiplier</span>
+              <span style="font-weight:700;color:var(--accent2);">5–10x</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:85%;"></div></div>
+          </div>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Early drought warning lead time</span>
+              <span style="font-weight:700;color:var(--accent);">2–4 weeks</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:60%;"></div></div>
+          </div>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">Why IndabaX?</h3>
+          <p style="font-size:13px;color:var(--muted);margin:0;">
+            Directly aligns with FAO and Lesotho Ministry of Agriculture priorities. The Sesotho language component fills a critical gap identified by the National University of Lesotho's ongoing word bank project. Can be piloted in Berea District within 6 months.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION 2: HEALTHCARE -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;overflow:hidden;position:relative;">
+    <div style="background:radial-gradient(600px 200px at 100% 0%,var(--accent2-soft),transparent 70%);position:absolute;top:0;left:0;right:0;height:200px;pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent2-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="section-num" style="color:var(--accent2);">Solution 02</div>
+          <h2 style="font-size:24px;font-weight:700;margin:4px 0 8px;">AI-Assisted TB/HIV Screening & Treatment Adherence for Rural Lesotho</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill pill2">Healthcare</span>
+            <span class="pill">HIV/TB</span>
+            <span class="pill" style="background:rgba(15,23,42,.05);border-color:var(--border);color:var(--muted);">Rural Access</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-width:0;" class="grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">The Problem</h3>
+          <p style="color:var(--text);margin:0 0 14px;font-size:14px;">
+            Lesotho has <strong>one of the world's highest HIV burdens</strong> (18.5% adult prevalence) and a TB incidence of 548 per 100,000. With 72% of the population in rural areas, travel distances to clinics exceed 10km on poor roads. TB case detection remains critically low, especially among children and men, and treatment completion rates suffer from long distances, food insecurity, and poor tracking systems.
+          </p>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">The AI Solution</h3>
+          <ul style="margin:0;padding:0;list-style:none;font-size:14px;">
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">01</span>
+              <span><strong>Mobile AI Chest X-Ray:</strong> Deploy CAD4TB-style AI on portable digital X-ray units for community screening — the technology has already screened 55M+ people globally and is validated in Kenya and Nigeria.</span>
+            </li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">02</span>
+              <span><strong>AI Stethoscope Screening:</strong> South African-developed AI stethoscope analyzes lung sounds to identify TB patterns without heavy radiography equipment.</span>
+            </li>
+            <li style="padding:8px 0;display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">03</span>
+              <span><strong>Treatment Adherence AI:</strong> Machine learning models predict patient dropout risk using EHR data, enabling targeted community health worker interventions and SMS/voice reminders in Sesotho.</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top:16px;">
+            <span class="tech-tag">Deep Learning (CXR)</span>
+            <span class="tech-tag">Audio Classification</span>
+            <span class="tech-tag">Predictive Analytics</span>
+            <span class="tech-tag">mHealth Platform</span>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">Expected Impact</h3>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">TB screening capacity per day</span>
+              <span style="font-weight:700;color:var(--accent2);">100+ people/unit</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:80%;"></div></div>
+          </div>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Case detection improvement</span>
+              <span style="font-weight:700;color:var(--accent);">+40–60%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:70%;"></div></div>
+          </div>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Treatment completion rate target</span>
+              <span style="font-weight:700;color:var(--accent2);">74% → 90%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:65%;"></div></div>
+          </div>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">Why IndabaX?</h3>
+          <p style="font-size:13px;color:var(--muted);margin:0;">
+            Addresses Lesotho's #1 health priority as identified by WHO and UNAIDS. Builds on existing AI diagnostic research specific to Lesotho's context (Atlantis Press, 2024). The mobile approach directly solves the rural access barrier where 70% of health facilities fail basic readiness standards.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION 3: WATER -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;overflow:hidden;position:relative;">
+    <div style="background:radial-gradient(600px 200px at 0% 0%,var(--accent-soft),transparent 70%);position:absolute;top:0;left:0;right:0;height:200px;pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="section-num">Solution 03</div>
+          <h2 style="font-size:24px;font-weight:700;margin:4px 0 8px;">Smart Water Resource Management for the "Water Tower" of Southern Africa</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill">Water</span>
+            <span class="pill pill2">LHWP</span>
+            <span class="pill" style="background:rgba(15,23,42,.05);border-color:var(--border);color:var(--muted);">Climate Resilience</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-width:0;" class="grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">The Problem</h3>
+          <p style="color:var(--text);margin:0 0 14px;font-size:14px;">
+            Despite being the "water tower" of Southern Africa through the <strong>Lesotho Highlands Water Project (LHWP)</strong>, Lesotho itself faces water insecurity due to inadequate domestic infrastructure, climate variability, and environmental impacts from dam operations. Communities displaced by Polihali and other dams report degraded water quality, while recurrent floods and droughts strain both agricultural and urban water systems.
+          </p>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">The AI Solution</h3>
+          <ul style="margin:0;padding:0;list-style:none;font-size:14px;">
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">01</span>
+              <span><strong>Water Demand Forecasting:</strong> LSTM time-series models predict domestic and agricultural water demand using climate, population, and consumption data, optimizing reservoir release schedules.</span>
+            </li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">02</span>
+              <span><strong>Environmental Flow Monitoring:</strong> Computer vision on satellite/stream camera data monitors river ecosystem health downstream of dams, ensuring compliance with environmental flow requirements.</span>
+            </li>
+            <li style="padding:8px 0;display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">03</span>
+              <span><strong>Flood & Drought Early Warning:</strong> Multi-modal AI integrating rainfall forecasts, soil moisture sensors, and historical patterns to trigger community alerts via SMS/radio.</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top:16px;">
+            <span class="tech-tag">LSTM Networks</span>
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">Satellite Imagery</span>
+            <span class="tech-tag">IoT Sensors</span>
+            <span class="tech-tag">Time Series</span>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">Expected Impact</h3>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Water infrastructure efficiency gain</span>
+              <span style="font-weight:700;color:var(--accent);">+20–25%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:65%;"></div></div>
+          </div>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Flood warning lead time improvement</span>
+              <span style="font-weight:700;color:var(--accent2);">+24–48 hrs</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:70%;"></div></div>
+          </div>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Domestic water access coverage target</span>
+              <span style="font-weight:700;color:var(--accent);">63% → 85%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:55%;"></div></div>
+          </div>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">Why IndabaX?</h3>
+          <p style="font-size:13px;color:var(--muted);margin:0;">
+            Lesotho's unique position as a water-exporting nation facing domestic scarcity creates a compelling narrative. Aligns with World Bank's 2025 study on climate change and water security. The $6.2B AI data center MoU (June 2026) signals government appetite for data-driven infrastructure solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION 4: EDUCATION -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;overflow:hidden;position:relative;">
+    <div style="background:radial-gradient(600px 200px at 100% 0%,var(--accent2-soft),transparent 70%);position:absolute;top:0;left:0;right:0;height:200px;pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent2-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="section-num" style="color:var(--accent2);">Solution 04</div>
+          <h2 style="font-size:24px;font-weight:700;margin:4px 0 8px;">Sesotho Language AI Platform for Inclusive Education Access</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill pill2">Education</span>
+            <span class="pill">Sesotho NLP</span>
+            <span class="pill" style="background:rgba(15,23,42,.05);border-color:var(--border);color:var(--muted);">Digital Inclusion</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-width:0;" class="grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">The Problem</h3>
+          <p style="color:var(--text);margin:0 0 14px;font-size:14px;">
+            Lesotho faces an education crisis with <strong>87% dropout rates in rural areas</strong>, particularly affecting boys who leave for herding or initiation schools. Only 67% of Grade 1 students reach Grade 7. Sesotho, the national language spoken by virtually all Basotho, lacks robust AI language tools — most educational technology is English-only, creating a barrier for learners and teachers. The National University of Lesotho has begun compiling a Sesotho word bank specifically to address this gap.
+          </p>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">The AI Solution</h3>
+          <ul style="margin:0;padding:0;list-style:none;font-size:14px;">
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">01</span>
+              <span><strong>Sesotho Adaptive Learning Tutor:</strong> AI-powered tutoring platform in Sesotho that adapts to each learner's pace, addressing the boy's disengagement crisis and supporting overstretched teachers in remote schools.</span>
+            </li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">02</span>
+              <span><strong>Sesotho Speech-to-Text for Education:</strong> ASR technology enabling voice-based learning for low-literacy contexts and creating accessible educational content from oral traditions.</span>
+            </li>
+            <li style="padding:8px 0;display:flex;gap:10px;">
+              <span style="color:var(--accent2);font-weight:700;flex-shrink:0;">03</span>
+              <span><strong>At-Risk Student Prediction:</strong> ML models analyze attendance, performance, and demographic data to identify students at risk of dropping out, enabling early intervention by school counselors.</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top:16px;">
+            <span class="tech-tag">NLP / Transformers</span>
+            <span class="tech-tag">Speech Recognition</span>
+            <span class="tech-tag">Adaptive Learning</span>
+            <span class="tech-tag">Predictive Analytics</span>
+            <span class="tech-tag">Low-Resource Languages</span>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">Expected Impact</h3>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Primary completion rate target</span>
+              <span style="font-weight:700;color:var(--accent2);">67% → 85%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:70%;"></div></div>
+          </div>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Dropout risk identification accuracy</span>
+              <span style="font-weight:700;color:var(--accent);">80–85%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:75%;"></div></div>
+          </div>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Learning outcome improvement</span>
+              <span style="font-weight:700;color:var(--accent2);">+15–25%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:60%;"></div></div>
+          </div>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">Why IndabaX?</h3>
+          <p style="font-size:13px;color:var(--muted);margin:0;">
+            Language inclusion is a signature African AI topic — highlighted at IndabaX South Sudan and South Africa events. Directly supports NUL's Sesotho word bank project (Feb 2026) and aligns with the government's Sebabatso AI Skills Development Programme (June 2026). The boys' education crisis is uniquely Lesotho-specific.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOLUTION 5: INFRASTRUCTURE -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px;overflow:hidden;position:relative;">
+    <div style="background:radial-gradient(600px 200px at 0% 0%,var(--accent-soft),transparent 70%);position:absolute;top:0;left:0;right:0;height:200px;pointer-events:none;"></div>
+    <div style="position:relative;">
+      <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:20px;flex-wrap:wrap;">
+        <div style="width:48px;height:48px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="section-num">Solution 05</div>
+          <h2 style="font-size:24px;font-weight:700;margin:4px 0 8px;">AI for Mountain Road Safety & Infrastructure Maintenance Prioritization</h2>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="pill">Infrastructure</span>
+            <span class="pill pill2">Road Safety</span>
+            <span class="pill" style="background:rgba(15,23,42,.05);border-color:var(--border);color:var(--muted);">Computer Vision</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;min-width:0;" class="grid-cols-1 lg:grid-cols-2">
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">The Problem</h3>
+          <p style="color:var(--text);margin:0 0 14px;font-size:14px;">
+            Lesotho's mountainous terrain creates some of the world's most dangerous roads — <strong>31.9 road fatalities per 100,000 people</strong>. Passes like Moteng, Sani, and Nkaobee are narrow, steep, unguarded, and become treacherous with rain or frost. Over 40% of national roads are rated "fair" or "poor." Climate change accelerates degradation, with bridges washing away and slopes failing. Limited maintenance budgets must be strategically allocated.
+          </p>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">The AI Solution</h3>
+          <ul style="margin:0;padding:0;list-style:none;font-size:14px;">
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">01</span>
+              <span><strong>Road Damage Detection:</strong> Computer vision models analyze dashcam/smartphone footage to detect potholes, cracks, and slope failures, creating real-time road condition maps for the Roads Directorate.</span>
+            </li>
+            <li style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">02</span>
+              <span><strong>Hazard Warning System:</strong> AI models combining weather data, road geometry, and accident history predict high-risk conditions (ice, fog, rockfall) and deliver warnings via roadside signs and mobile apps.</span>
+            </li>
+            <li style="padding:8px 0;display:flex;gap:10px;">
+              <span style="color:var(--accent);font-weight:700;flex-shrink:0;">03</span>
+              <span><strong>Maintenance Prioritization Engine:</strong> Reinforcement learning optimizes budget allocation across the road network, balancing traffic volume, safety risk, and repair cost to maximize lives saved per maloti spent.</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top:16px;">
+            <span class="tech-tag">Computer Vision</span>
+            <span class="tech-tag">Object Detection</span>
+            <span class="tech-tag">Reinforcement Learning</span>
+            <span class="tech-tag">Risk Modeling</span>
+            <span class="tech-tag">GIS Mapping</span>
+          </div>
+        </div>
+        
+        <div>
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;">Expected Impact</h3>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Road assessment speed vs manual</span>
+              <span style="font-weight:700;color:var(--accent);">10–20x faster</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:85%;"></div></div>
+          </div>
+          <div style="background:rgba(200,90,58,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Fatal accident reduction potential</span>
+              <span style="font-weight:700;color:var(--accent2);">−25–35%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:70%;"></div></div>
+          </div>
+          <div style="background:rgba(45,126,181,.04);border-radius:12px;padding:16px;margin-bottom:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <span style="font-size:13px;color:var(--muted);">Maintenance budget efficiency</span>
+              <span style="font-weight:700;color:var(--accent);">+30–40%</span>
+            </div>
+            <div class="impact-bar"><div class="impact-fill" style="width:75%;"></div></div>
+          </div>
+          
+          <h3 style="font-size:15px;font-weight:600;color:var(--accent2);margin:20px 0 10px;text-transform:uppercase;letter-spacing:.05em;">Why IndabaX?</h3>
+          <p style="font-size:13px;color:var(--muted);margin:0;">
+            Lesotho's unique mountain geography makes this problem specific and visually compelling — ideal for a conference presentation. Road safety is a national priority cited in the NSDP II. The approach is low-cost (uses existing smartphone footage) and directly addresses the World Bank's findings on climate change accelerating road infrastructure degradation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px;">
+    <h2 style="font-size:22px;font-weight:700;margin:0 0 24px;text-align:center;">Solution Comparison & Recommendation</h2>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:700px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border);">
+            <th style="text-align:left;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Solution</th>
+            <th style="text-align:center;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Feasibility</th>
+            <th style="text-align:center;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Impact Scale</th>
+            <th style="text-align:center;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Data Availability</th>
+            <th style="text-align:center;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Lesotho Specificity</th>
+            <th style="text-align:center;padding:12px 16px;color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em;">Presentation Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 16px;font-weight:600;">Agriculture & Climate Resilience</td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span class="pill" style="font-size:13px;">TOP PICK</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 16px;font-weight:600;">TB/HIV Screening & Adherence</td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●○○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●○○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="font-weight:700;color:var(--accent);">9.2/10</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 16px;font-weight:600;">Sesotho Language AI Education</td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●○○○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="font-weight:700;color:var(--accent);">8.8/10</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:14px 16px;font-weight:600;">Smart Water Management</td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●○○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="font-weight:700;color:var(--accent);">8.5/10</span></td>
+          </tr>
+          <tr>
+            <td style="padding:14px 16px;font-weight:600;">Mountain Road Safety AI</td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●○○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent);font-weight:700;">●●●●○</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="color:var(--accent2);font-weight:700;">●●●●●</span></td>
+            <td style="padding:14px 16px;text-align:center;"><span style="font-weight:700;color:var(--accent);">8.3/10</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:24px;padding:20px;background:var(--accent-soft);border-radius:12px;border-left:4px solid var(--accent);">
+      <div style="font-weight:700;color:var(--accent);margin-bottom:6px;">Top Recommendation for Your IndabaX Presentation</div>
+      <p style="font-size:14px;color:var(--text);margin:0;">
+        <strong>Agriculture & Climate Resilience System</strong> is the strongest presenter choice: it combines high feasibility (mobile chatbot + existing frameworks), massive impact (29% of workforce), clear Lesotho specificity (maize/sorghum, mountain terrain), and has already been identified as a priority by IEEE. The Sesotho language component adds a unique African AI angle that resonates deeply with Indaba audiences.
+      </p>
+    </div>
+  </div>
+
+  <!-- IMPLEMENTATION ROADMAP -->
+  <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px;">
+    <h2 style="font-size:22px;font-weight:700;margin:0 0 24px;text-align:center;">Recommended Presentation Structure</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+      <div style="padding:20px;border:1px solid var(--border);border-radius:12px;border-top:3px solid var(--accent);">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Minutes 0–3</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px;">The Basotho Context</div>
+        <p style="font-size:13px;color:var(--muted);margin:0;">Open with Lesotho's unique challenges — the mountain kingdom paradox: abundant water but domestic scarcity, high HIV/TB burden, youth unemployment, the boys' education crisis. Use the statistics from this proposal.</p>
+      </div>
+      <div style="padding:20px;border:1px solid var(--border);border-radius:12px;border-top:3px solid var(--accent2);">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Minutes 3–10</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px;">The AI Solution</div>
+        <p style="font-size:13px;color:var(--muted);margin:0;">Deep dive into your chosen solution. Present the technical architecture clearly. Explain why this AI approach is better than existing methods. Show a concrete example of how a farmer/patient/student would interact with it.</p>
+      </div>
+      <div style="padding:20px;border:1px solid var(--border);border-radius:12px;border-top:3px solid var(--accent);">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Minutes 10–15</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Data & Methodology</div>
+        <p style="font-size:13px;color:var(--muted);margin:0;">Describe your data sources (satellite, WHO, DHS, MoA). Explain your model choice with justification. Include preliminary results or expected performance metrics from comparable African implementations.</p>
+      </div>
+      <div style="padding:20px;border:1px solid var(--border);border-radius:12px;border-top:3px solid var(--accent2);">
+        <div style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Minutes 15–20</div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:8px;">Impact & Next Steps</div>
+        <p style="font-size:13px;color:var(--muted);margin:0;">Quantify expected impact in Basotho lives improved. Propose a concrete pilot plan with timeline, partners (NUL, MoA, WHO, LHDA), and budget estimate. End with a call to collaboration.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="reveal" style="border-top:1px solid var(--border);padding-top:32px;">
+    <h3 style="font-size:14px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin:0 0 16px;">Authoritative Sources</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;font-size:12px;color:var(--muted);">
+      <div>• World Bank Lesotho Macro Poverty Outlook, Oct 2025</div>
+      <div>• WHO Lesotho 2025 Annual Report</div>
+      <div>• UN Lesotho Common Country Analysis Update 2023</div>
+      <div>• FAO — Lesotho Family Farming Profile</div>
+      <div>• Government of Lesotho — NSDP II & Ministry Updates</div>
+      <div>• UNAIDS HIV & TB Sustainability Roadmap 2030</div>
+      <div>• IEEE Humanitarian Technologies — Lesotho Ag Chatbot</div>
+      <div>• PMC / NIH — TB Diagnosis Barriers in Lesotho</div>
+      <div>• UNICEF Lesotho Education & HIV Programmes</div>
+    </div>
+  </div>
+
+</div>
+</div>
+</html>
