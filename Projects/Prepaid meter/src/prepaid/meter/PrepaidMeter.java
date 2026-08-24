@@ -4,17 +4,28 @@
  */
 package prepaid.meter;
 
-/**
- *
- * @author thato
- */
 public class PrepaidMeter {
+    private String meterNumber;
+    private double units;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public PrepaidMeter(String meterNumber) {
+        this.meterNumber = meterNumber;
+        this.units = 0;
     }
-    
+
+    public void addUnits(double amount) {
+        units += amount;
+    }
+
+    public void consume(double amount) {
+        if (amount <= units) {
+            units -= amount;
+        } else {
+            System.out.println("Insufficient units.");
+        }
+    }
+
+    public double getUnits() {
+        return units;
+    }
 }

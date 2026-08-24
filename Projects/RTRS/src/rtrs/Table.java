@@ -1,23 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package rtrs;
 
-/**
- *
- * @author thato
- */
-public class RTRS {
+public class Table {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-    class Table {
     private int tableNumber;
     private int capacity;
     private boolean reserved;
@@ -35,6 +19,16 @@ public class RTRS {
     public void reserve() {
         reserved = true;
     }
-}
-    
+
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public boolean isReserved() {
+        return reserved;
+    }
 }

@@ -4,17 +4,28 @@
  */
 package classes1;
 
-/**
- *
- * @author thato
- */
-public class Classes1 {
+public class Student {
+    String name;
+    int age;
+    String course;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    // Constructor
+    public Student(String name, int age, String course) {
+        this.name = name;
+        this.age = age;
+        this.course = course;
     }
-    
+
+    // Method
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Course: " + course);
+    }
+
+    public static void main(String[] args) {
+        Student student = new Student("Tay-Tay", 21, "BSc Hons Computing");
+
+        student.displayDetails();
+    }
 }

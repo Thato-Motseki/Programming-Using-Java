@@ -4,21 +4,7 @@
  */
 package dataplan;
 
-/**
- *
- * @author thato
- */
-public class DataPlan {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
-}
-class Account {
+public class Account {
     private String accountNumber;
     private double balance;
 
