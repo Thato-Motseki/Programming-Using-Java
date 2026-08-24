@@ -5,10 +5,6 @@
 package banking.system;
 import java.util.Scanner;
 
-/**
- *
- * @author thato
- */
 public class BankingSystem {
     
     
@@ -21,8 +17,8 @@ public class BankingSystem {
         final String Stored_Password = "Pass@123";
         int attempts = 0;
         int maxAttempts = 3;
-        boolean lockedOut = false;
         
+        //Username and Password verification
         while (attempts < maxAttempts){
             System.out.print("Enter your Username: ");
             String username = input.next();
@@ -32,6 +28,7 @@ public class BankingSystem {
             
             boolean isAuthenticated = username.equals(Stored_Username) && password.equals(Stored_Password);
             
+            //Access approval/denial
             if (!isAuthenticated){
                 attempts++;
                 System.out.println("Attemts Remaining: " + (maxAttempts-attempts));
@@ -41,6 +38,7 @@ public class BankingSystem {
                 break;
             }
             
+        //attempts counter
         if (attempts == maxAttempts){
             System.out.println("Account locked, max attempts reached.");
         }
