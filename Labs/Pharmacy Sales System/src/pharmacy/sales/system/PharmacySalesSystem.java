@@ -55,7 +55,7 @@ public class PharmacySalesSystem {
             }
             
             else{
-                System.out.println("Enter the quantity for the item number you have selected: ");
+                System.out.print("\nEnter the quantity for the item number you have selected: ");
                 quantity = scanner.nextInt();
                 
                // Validates that the quantity is greater than zero.
@@ -81,19 +81,21 @@ public class PharmacySalesSystem {
                     } 
                 }
             }
-            if (subtotal > 300){
-                discount = subtotal * 0.10;
-                total = subtotal - discount;
-            }
-            //Order summary
-            System.out.print("\n" + "=" . repeat(8) + "PURCHASE SUMMARY" + "=" . repeat(8));
-            for (String[] purchase : purchases) {
-                System.out.println("\nProduct: " + purchase[0]
-                        + "  Quantity: " + purchase[1]
-                        + "  Subtotal: M" + purchase[2]);
-            }
-            System.out.println("Total: M" + total);
-            }
+        }
+    if (subtotal > 300){
+        discount = subtotal * 0.10;
+        total = subtotal - discount;
+    }
+    //Order summary
+    System.out.print("\n" + "=" . repeat(8) + "PURCHASE SUMMARY" + "=" . repeat(8));
+        
+    for (String[] purchase : purchases) {
+        System.out.println("\nProduct: " + purchase[0]
+                + "  Quantity: " + purchase[1]
+                + "  Subtotal: M" + purchase[2]);
+    }
+    System.out.println("Total: M" + total);
+            
         
         scanner.close();
 
