@@ -74,7 +74,7 @@ public class SupermarketBillingSystem {
 
                             i++;
                         } 
-                    }
+                    } 
                 }
             }
             //if order number < 1 or > 5
@@ -96,7 +96,7 @@ public class SupermarketBillingSystem {
         }
 
         //Order summary
-        System.out.print("\n" + "=" . repeat(5) + "ORDER SUMMARY" + "=" . repeat(5));
+        System.out.print("\n" + "=" . repeat(8) + "ORDER SUMMARY" + "=" . repeat(8));
         for (String[] purchase : purchases) {
             System.out.println("\nProduct: " + purchase[0]
                     + "  Quantity: " + purchase[1]
