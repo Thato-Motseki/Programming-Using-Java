@@ -1,20 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package animal;
 
-/**
- *
- * @author thato
- */
-public class Animal {
+abstract class Animal {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    // Abstract method: subclasses MUST provide their own implementation
+    abstract void makeSound();
+
+    // Concrete method: already implemented
+    void sleep() {
+        System.out.println("Animal is sleeping...");
     }
-    
+}
+
+class Dog extends Animal {
+
+    @Override
+    void makeSound() {
+        System.out.println("Dog says: Woof!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Animal myDog = new Dog();
+
+        myDog.makeSound();
+        myDog.sleep();
+    }
 }
