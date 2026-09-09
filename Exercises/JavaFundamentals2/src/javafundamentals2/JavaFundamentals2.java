@@ -52,24 +52,10 @@ public class JavaFundamentals2 {
         System.out.println("Odd numbers: " + odd);
         
         //QUESTION 8
-        System.out.print("\n");
-        System.out.println("Question 8:");
-        
-        System.out.print("Enter number 1: ");
-        int a = scanner.nextInt();
-        
-        System.out.print("Enter number 2: ");
-        int b = scanner.nextInt();
-        
-        System.out.println(a + " + " + b + " = " + add(a,b) );
         
         scanner.close();
         
         
     }
 
-    private static String add(int a, int b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }
