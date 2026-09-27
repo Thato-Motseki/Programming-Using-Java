@@ -1,74 +1,43 @@
-# Programming-Using-Java
-# Programming Using Java
+# AI Response Evaluator
 
-A repository containing my Java programming coursework, assignments, and projects. It highlights my experience with Java fundamentals, object-oriented programming, and software development practices through practical implementations.
+A small Python project created for **One Commit a Day — Day 37/60**.
 
-## Technologies
+The project demonstrates a simple way to evaluate an AI-generated response against a few practical criteria:
 
-- Java
-- JDK
-- IntelliJ IDEA / NetBeans / Eclipse
-- Git & GitHub
+- Relevance
+- Clarity
+- Completeness
+- Accuracy awareness
 
-## Topics Covered
+This is not a replacement for human fact-checking. It is a learning project showing how structured evaluation can be used when working with AI.
 
-- Java Fundamentals
-- Variables and Data Types
-- Operators
-- Control Flow
-- Methods
-- Arrays
-- Object-Oriented Programming (OOP)
-- Classes and Objects
-- Inheritance
-- Interfaces
-- Polymorphism
-- Exception Handling
-- Collections Framework
-- File Handling
-- Basic GUI Programming
-- JDBC (Database Connectivity)
+## Project Structure
 
-## Repository Structure
-
-```
-Programming-Using-Java/
-│
-├── Assignments/
-├── Labs/
-├── Projects/
-├── Exercises/
-└── README.md
+```text
+day37-ai-response-evaluator/
+├── README.md
+├── ai_response_evaluator.py
+└── sample_evaluation.txt
 ```
 
-## Learning Objectives
+## How to Run
 
-- Build applications using Java.
-- Apply object-oriented design principles.
-- Develop problem-solving and algorithmic thinking skills.
-- Implement efficient and maintainable code.
-- Explore Java libraries and APIs.
-
-## Getting Started
-
-### Prerequisites
-
-- Java JDK 17+ (or your course version)
-- IntelliJ IDEA, Eclipse, or NetBeans
-- Git
-
-### Clone the Repository
+Make sure Python 3 is installed.
 
 ```bash
-git clone https://github.com/yourusername/programming-using-java.git
+python ai_response_evaluator.py
 ```
 
-Compile and run any project using your preferred Java IDE or the command line.
+The program asks for an AI response and allows the user to score it from 1–5 across four criteria.
 
-## Author
+## What I Learned
 
-**Thato Motseki**
+This exercise helped me understand that using AI effectively is not only about generating prompts. It is also about evaluating the output.
 
-Bachelor of Science (Honours) in Computing
+An AI response can sound convincing while still being incomplete, unclear, or factually questionable. A structured evaluation process makes it easier to identify those weaknesses.
 
-Aspiring Software Engineer | Full-Stack Developer
+## Key Idea
+
+**Generate → Evaluate → Verify → Improve**
+
+AI can accelerate the first step, but human judgment is still important when deciding whether an output is useful and trustworthy.
