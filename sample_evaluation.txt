@@ -1,0 +1,15 @@
+Sample AI Response Evaluation
+
+Example response:
+"APIs allow different software systems to communicate with each other."
+
+Relevance: 5/5
+Clarity: 5/5
+Completeness: 3/5
+Accuracy awareness: 4/5
+
+Overall: 17/20 (85%)
+
+Observation:
+The response is clear and relevant, but it is intentionally brief. A stronger
+answer could explain how requests and responses work and provide a simple example.
