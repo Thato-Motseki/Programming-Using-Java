@@ -1,0 +1,20 @@
+@startuml
+entity users { *user_id : INT <<PK>> -- username : VARCHAR <<UQ>> -- password_hash : CHAR(64) -- role : ENUM -- active : BOOLEAN }
+entity customers { *customer_id : INT <<PK>> -- national_id : VARCHAR <<UQ>> -- first_name : VARCHAR -- surname : VARCHAR -- phone : VARCHAR -- email : VARCHAR }
+entity policies { *policy_id : INT <<PK>> -- policy_number : VARCHAR <<UQ>> -- customer_id : INT <<FK>> -- product_type : ENUM -- start_date : DATE -- end_date : DATE -- coverage_amount : DECIMAL -- annual_premium : DECIMAL -- status : ENUM }
+entity motor_policy_details { *policy_id : INT <<PK,FK>> -- vehicle_registration : VARCHAR -- vehicle_value : DECIMAL -- vehicle_type : ENUM -- cover_type : ENUM }
+entity property_policy_details { *policy_id : INT <<PK,FK>> -- property_value : DECIMAL -- contents_value : DECIMAL -- property_type : ENUM }
+entity life_policy_details { *policy_id : INT <<PK,FK>> -- age_at_inception : TINYINT -- beneficiary_name : VARCHAR -- beneficiary_contact : VARCHAR }
+entity health_policy_details { *policy_id : INT <<PK,FK>> -- health_plan : ENUM -- dependants : TINYINT }
+entity claims { *claim_id : INT <<PK>> -- claim_number : VARCHAR <<UQ>> -- policy_id : INT <<FK>> -- customer_id : INT <<FK>> -- claim_amount : DECIMAL -- approved_amount : DECIMAL -- status : ENUM -- rejection_reason : VARCHAR }
+entity claim_assessments { *assessment_id : INT <<PK>> -- claim_id : INT <<FK>> -- assessed_by : INT <<FK>> -- decision : ENUM -- approved_amount : DECIMAL }
+customers ||--o{ policies
+policies ||--o{ claims
+customers ||--o{ claims
+policies ||--o| motor_policy_details
+policies ||--o| property_policy_details
+policies ||--o| life_policy_details
+policies ||--o| health_policy_details
+claims ||--o{ claim_assessments
+users ||--o{ claim_assessments
+@enduml

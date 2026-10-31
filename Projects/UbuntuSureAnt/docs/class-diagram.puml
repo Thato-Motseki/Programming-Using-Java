@@ -1,0 +1,33 @@
+@startuml
+abstract class InsurancePolicy {
+  - policyNumber: String
+  - customerId: int
+  - startDate: LocalDate
+  - endDate: LocalDate
+  - coverageAmount: BigDecimal
+  - status: PolicyStatus
+  + calculateAnnualPremium(): BigDecimal
+  + getProductType(): String
+}
+class MotorPolicy { + calculateAnnualPremium(): BigDecimal }
+class PropertyPolicy { + calculateAnnualPremium(): BigDecimal }
+class LifePolicy { + calculateAnnualPremium(): BigDecimal }
+class HealthPolicy { + calculateAnnualPremium(): BigDecimal }
+class Customer
+class Claim
+class ClaimAssessment
+class User
+class CustomerService
+class CustomerDao
+class ReportDao
+InsurancePolicy <|-- MotorPolicy
+InsurancePolicy <|-- PropertyPolicy
+InsurancePolicy <|-- LifePolicy
+InsurancePolicy <|-- HealthPolicy
+Customer "1" -- "0..*" InsurancePolicy : owns
+InsurancePolicy "1" -- "0..*" Claim : receives
+Claim "1" -- "0..*" ClaimAssessment : assessed by
+User "1" -- "0..*" ClaimAssessment : records
+CustomerService --> CustomerDao
+ReportDao ..> Customer
+@enduml

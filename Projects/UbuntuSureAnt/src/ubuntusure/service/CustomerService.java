@@ -1,0 +1,5 @@
+package ubuntusure.service;
+import ubuntusure.dao.CustomerDao; import ubuntusure.util.Validation; import java.sql.SQLException; import java.time.LocalDate;
+public class CustomerService {private final CustomerDao dao=new CustomerDao();
+ public int register(String first,String surname,String nationalId,String dob,String gender,String phone,String email,String address)throws SQLException{first=Validation.required(first,"First name");surname=Validation.required(surname,"Surname");nationalId=Validation.required(nationalId,"National ID/passport");phone=Validation.required(phone,"Contact number");if(!phone.matches("[+0-9() -]{7,20}"))throw new IllegalArgumentException("Enter a valid contact number.");LocalDate date=null;if(dob!=null&&!dob.isBlank())try{date=LocalDate.parse(dob);}catch(Exception e){throw new IllegalArgumentException("Date of birth must use YYYY-MM-DD.");}return dao.create(first,surname,nationalId,date,gender,phone,email==null?null:email.trim(),address==null?null:address.trim());}
+}
